@@ -30,7 +30,7 @@
     "prettier": "^1.18.2"
   },
   "lint-staged": {
-    "./**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "./**/*.{js,jsx,ts,tsx,json,scss,md}": [
       "eslint --quiet .",
       "prettier --write",
       "git add"
