@@ -1,6 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Names = sequelize.define("names", {
-    userId: { type: DataTypes.INTEGER, allowNull: false },
+  var Names = sequelize.define("Names", {
     name: { type: DataTypes.STRING, allowNull: false },
     gender: { type: DataTypes.BOOLEAN, defaultValue: null },
     searchTerm: { type: DataTypes.STRING, allowNull: false }
