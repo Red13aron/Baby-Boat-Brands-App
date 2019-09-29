@@ -16,8 +16,8 @@ CREATE TABLE names
 CREATE TABLE users
 (
     id int not null AUTO_INCREMENT,
-    userName varchar(255) not null,
-    userPassword varchar(255) not null,
+    name varchar(255) not null,
+    password varchar(255) not null,
     PRIMARY KEY (id)
 
 )
