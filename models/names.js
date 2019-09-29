@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Names = sequelize.define("names", {
     userId: { type: DataTypes.INTEGER, allowNull: false },
     name: { type: DataTypes.STRING, allowNull: false },
-    gender: { type: DataTypes.INTEGER, defaultValue: null },
+    gender: { type: DataTypes.BOOLEAN, defaultValue: null },
     searchTerm: { type: DataTypes.STRING, allowNull: false }
   });
 

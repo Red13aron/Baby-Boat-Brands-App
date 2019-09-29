@@ -7,7 +7,7 @@ CREATE TABLE names
 	id int NOT NULL AUTO_INCREMENT,
 	userId int NOT NULL,
     name varchar(255) NOT NULL,
-	gender int(1) DEFAULT NULL,
+	gender boolean DEFAULT NULL,
     searchTerm varchar(255) NOT NULL,
 	PRIMARY KEY (id)
 );
