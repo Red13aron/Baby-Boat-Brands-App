@@ -11,16 +11,6 @@ module.exports = function(app) {
       res.json(dbnames);
     });
   });
-  // Get the API for the search terms in form HTML: not done!
-  app.get("/api/names", function(req, res) {
-    db.Names.findAll({
-      where: {
-        userId: req.params.userid
-      }
-    }).then(function(dbnames) {
-      res.json(dbnames);
-    });
-  });
 
   // Get the API for all the names - just for developers:
   app.get("/api/developer/names", function(req, res) {
@@ -31,13 +21,17 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/names/:userid", function(req, res) {
-    db.Names.create(req.body).then(function(dbnames) {
+    db.Names.create({
+      name: req.body.name,
+      gender: req.body.gender,
+      searchTerm: req.body.searchTerm
+    }).then(function(dbnames) {
       res.json(dbnames);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/names/:userid", function(req, res) {
+  app.delete("/api/names/:id", function(req, res) {
     db.Names.destroy({ where: { id: req.params.id } }).then(function(
       dbExample
     ) {
