@@ -1,11 +1,8 @@
 DROP DATABASE IF EXISTS namesdb;
 CREATE DATABASE namesdb;
-
-<<<<<<< HEAD:models/schema.sql
-use namesdb;
-=======
 USE namesdb;
->>>>>>> d0fe986c57e0b053b5e0f941142691219d29b364:db/schema.sql
+
+USE namesdb;
 CREATE TABLE names
 (
     id int NOT NULL
@@ -31,5 +28,4 @@ CREATE TABLE names
         (255) not null,
     PRIMARY KEY
         (id)
-
 );
