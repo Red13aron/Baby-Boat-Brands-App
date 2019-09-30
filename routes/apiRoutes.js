@@ -46,6 +46,18 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/login", function(req, res) {
+    db.Users.findOne({ where: { name: req.body.username } }).then(function(
+      user
+    ) {
+      if (req.body.password === user.password) {
+        res.json({ id: user.id });
+      } else {
+        res.json(401);
+      }
+    });
+  });
+
   app.get("/api/names/:searchterm/:gender", function(req, res) {
     const searchterm = req.params.searchterm;
     const genderterm = req.params.gender;

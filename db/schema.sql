@@ -17,15 +17,13 @@ CREATE TABLE names
     (id)
 );
 
-
-    CREATE TABLE users
-    (
-        id int not null
-        AUTO_INCREMENT,
-    name varchar
-        (255) not null,
-    password varchar
-        (255) not null,
-    PRIMARY KEY
-        (id)
+DROP TABLE users;
+CREATE TABLE users
+(
+    id int not null AUTO_INCREMENT,
+    name varchar(255) not null,
+    password varchar(255) not null,
+    createdAt DATE null,
+    updatedAt DATE null,
+    PRIMARY KEY (id)
 );
