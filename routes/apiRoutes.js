@@ -1,4 +1,5 @@
 var db = require("../models");
+const Scrapper = require("../scrapper/scrappe");
 
 module.exports = function(app) {
   // Get the API for specific user:
@@ -44,12 +45,12 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-};
 
-// https://www.babycenter.ca/t1003021/baby-name-search-results?gender=MALE&startsWith=&endsWith=&origin=&meaning=brave&numeral=
-app.get("/api/names/:searchterm", function(req, res) {
-  const searchterm = req.params.searchterm;
-  axios.get(
-    "https://www.babycenter.ca/t1003021/baby-name-search-results?gender=MALE&startsWith=&endsWith=&origin=&meaning=brave&numeral="
-  );
-});
+  app.get("/api/names/:searchterm/:gender", function(req, res) {
+    const searchterm = req.params.searchterm;
+    const genderterm = req.params.gender;
+
+    const bNames = Scrapper.scrapper(searchterm, genderterm);
+    console.log(bNames);
+  });
+};
