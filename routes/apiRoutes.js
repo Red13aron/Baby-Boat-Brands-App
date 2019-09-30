@@ -1,4 +1,5 @@
 var db = require("../models");
+const Scrapper = require("../scrapper/scrappe");
 
 module.exports = function(app) {
   // Get the API for specific user:
@@ -38,7 +39,7 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/names/:userid", function(req, res) {
-    db.Names.destroy({ where: { id: req.params.id } }).then(function(
+    db.Names.destroy({ where: { userid: req.params.id } }).then(function(
       dbExample
     ) {
       res.json(dbExample);
@@ -55,5 +56,13 @@ module.exports = function(app) {
         res.json(401);
       }
     });
+  });
+
+  app.get("/api/names/:searchterm/:gender", function(req, res) {
+    const searchterm = req.params.searchterm;
+    const genderterm = req.params.gender;
+
+    const bNames = Scrapper.scrapper(searchterm, genderterm);
+    console.log(bNames);
   });
 };

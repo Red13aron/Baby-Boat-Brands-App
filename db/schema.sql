@@ -5,12 +5,16 @@ USE namesdb;
 USE namesdb;
 CREATE TABLE names
 (
-	id int NOT NULL AUTO_INCREMENT,
+    id int NOT NULL
+    AUTO_INCREMENT,
 	userId int NOT NULL,
-    name varchar(255) NOT NULL,
+    name varchar
+    (255) NOT NULL,
 	gender boolean DEFAULT NULL,
-    searchTerm varchar(255) NOT NULL,
-	PRIMARY KEY (id)
+    searchTerm varchar
+    (255) NOT NULL,
+	PRIMARY KEY
+    (id)
 );
 
 DROP TABLE users;
