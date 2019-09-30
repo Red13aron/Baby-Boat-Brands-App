@@ -38,10 +38,18 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/names/:userid", function(req, res) {
-    db.Names.destroy({ where: { id: req.params.id } }).then(function(
+    db.Names.destroy({ where: { userid: req.params.id } }).then(function(
       dbExample
     ) {
       res.json(dbExample);
     });
   });
 };
+
+// https://www.babycenter.ca/t1003021/baby-name-search-results?gender=MALE&startsWith=&endsWith=&origin=&meaning=brave&numeral=
+app.get("/api/names/:searchterm", function(req, res) {
+  const searchterm = req.params.searchterm;
+  axios.get(
+    "https://www.babycenter.ca/t1003021/baby-name-search-results?gender=MALE&startsWith=&endsWith=&origin=&meaning=brave&numeral="
+  );
+});
