@@ -53,6 +53,15 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/signup", function(req, res) {
+    db.Users.create({
+      name: req.body.username,
+      password: req.body.password
+    }).then(function(dbUsers) {
+      res.json(dbUsers);
+    });
+  });
+
   app.get("/api/names/:searchterm/:gender", function(req, res) {
     const searchterm = req.params.searchterm;
     const genderterm = req.params.gender;
