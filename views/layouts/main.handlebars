@@ -5,15 +5,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
   <link rel="stylesheet" href="/css/layouts/marketing.css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
+  <link rel="stylesheet" href="/css/style.css" charset="utf-8">
+  <link rel="stylesheet" href="/css/modal.css" charset="utf-8">
+  <script src="/js/script.js"></script>
+  <title>Babies, Boats, & Brands</title>
 </head>
 
 <body>
   {{{body}}}
+  <input class="modal-state" id="modal" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg"></label>
+    <div class="modal__inner">
+        <label class="modal__close" for="modal"></label>
+        <form class="form" id="loginForm">
+          <h1>Log In</h1>
+          <input type="text" id="usernameInput" placeholder="Username">
+          <input type="password" id="passwordInput" placeholder="Password">
+          <button type="submit" id="loginButton">Login</button>
+        </form>
+    </div>
+  </div>
 </body>
 
 </html>
