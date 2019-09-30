@@ -2,7 +2,6 @@ DROP DATABASE IF EXISTS namesdb;
 CREATE DATABASE namesdb;
 USE namesdb;
 
-USE namesdb;
 CREATE TABLE names
 (
     id int NOT NULL

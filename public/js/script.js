@@ -1,13 +1,30 @@
 (function() {
   let userId = null;
+  let searchTerm = "";
+
+  const getSearchTerm = function() {
+    const pathName = window.location.pathname;
+    const params = pathName.split("/");
+    searchTerm = params[1];
+  };
 
   const favoriteHandler = function(event) {
+    const genderElement = event.target.parentNode.previousElementSibling;
+    const nameElement = genderElement.previousElementSibling;
+    let genderValue = null;
+    if (genderElement.innerText === "M") {
+      genderValue = 0;
+    } else if (genderElement.innerText === "F") {
+      genderValue = 1;
+    }
     const name = {
-      name: "nameTest",
-      gender: 0,
-      searchTerm: "termTest"
+      UserId: userId,
+      name: nameElement.innerText,
+      gender: genderValue,
+      searchTerm: searchTerm
     };
-    fetch("/api/favorite", {
+    console.log(name);
+    fetch("/api/names/" + userId, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -34,10 +51,12 @@
       .then(res => res.json())
       .then(user => {
         userId = user.id;
+        document.cookie = "userId=" + user.id;
       });
   };
 
   const init = function() {
+    userId = Number(document.cookie.split(";")[0].split("=")[1]);
     document
       .getElementById("loginForm")
       .addEventListener("submit", submitHandler);
@@ -46,6 +65,7 @@
         favoriteHandler(event);
       }
     });
+    getSearchTerm();
   };
 
   document.addEventListener("DOMContentLoaded", init);
