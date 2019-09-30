@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS namesdb;
 CREATE DATABASE namesdb;
+USE namesdb;
 
 USE namesdb;
 CREATE TABLE names
@@ -19,5 +20,4 @@ CREATE TABLE users
     name varchar(255) not null,
     password varchar(255) not null,
     PRIMARY KEY (id)
-
-)
+);
