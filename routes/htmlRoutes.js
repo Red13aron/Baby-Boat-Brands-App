@@ -8,6 +8,14 @@ module.exports = function(app) {
     //});
   });
 
+  app.get("/history", function(req, res) {
+    res.render("history");
+  });
+
+  app.get("/results/:term", function(req, res) {
+    res.render("results");
+  });
+
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(

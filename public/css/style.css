@@ -6,3 +6,53 @@
 body {
     background-color: #1f8dd6;
 }
+.content-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #f6f6f6;
+    font-size: 1.5em;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.content {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 50%;
+}
+#header .pure-menu-selected a, #header .pure-menu-selected a:hover {
+    color: #f6f6f6;
+    cursor: unset;
+}
+#header .pure-menu-link {
+    color: #6fbef3;
+}
+#header .pure-menu-link:hover {
+    background-color: unset;
+    color: #aecfe5;
+    cursor: pointer;
+}
+.button-secondary {
+    color: #0c588b;
+}
+.pure-g {
+    text-align: left;
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgba(0,0,0,0.1);
+    padding: 5px;
+}
+.pure-g .pure-header {
+    border-bottom: 2px solid #f6f6f6;
+}
+.right-align {
+    text-align: right;
+}
