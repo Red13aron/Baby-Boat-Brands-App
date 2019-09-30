@@ -1,5 +1,5 @@
 (function() {
-  let userId = null;
+  let _userId = null;
   let searchTerm = "";
 
   const getSearchTerm = function() {
@@ -11,12 +11,16 @@
   const favoriteHandler = function(event) {
     const genderElement = event.target.parentNode.previousElementSibling;
     const nameElement = genderElement.previousElementSibling;
+    const nameIdElement = nameElement.previousElementSibling;
     let genderValue = null;
     if (genderElement.innerText === "M") {
       genderValue = 0;
     } else if (genderElement.innerText === "F") {
       genderValue = 1;
     }
+    const userId = nameIdElement.classList.contains("name-id")
+      ? nameIdElement.value
+      : _userId;
     const name = {
       UserId: userId,
       name: nameElement.innerText,
@@ -50,13 +54,13 @@
     })
       .then(res => res.json())
       .then(user => {
-        userId = user.id;
+        _userId = user.id;
         document.cookie = "userId=" + user.id;
       });
   };
 
   const init = function() {
-    userId = Number(document.cookie.split(";")[0].split("=")[1]);
+    _userId = Number(document.cookie.split(";")[0].split("=")[1]);
     document
       .getElementById("loginForm")
       .addEventListener("submit", submitHandler);

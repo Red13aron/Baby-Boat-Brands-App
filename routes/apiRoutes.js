@@ -1,19 +1,9 @@
 var db = require("../models");
-const Scrapper = require("../scrapper/scrappe");
-
+const Scrapper = require("../scrapper/scrappe.js");
+const scrapper = new Scrapper();
 module.exports = function(app) {
   // Get the API for specific user:
   app.get("/api/names/:userid", function(req, res) {
-    db.Names.findAll({
-      where: {
-        userId: req.params.userid
-      }
-    }).then(function(dbnames) {
-      res.json(dbnames);
-    });
-  });
-  // Get the API for the search terms in form HTML: not done!
-  app.get("/api/names", function(req, res) {
     db.Names.findAll({
       where: {
         userId: req.params.userid
@@ -39,8 +29,9 @@ module.exports = function(app) {
   });
 
   // Delete an example by id
-  app.delete("/api/names/:userid", function(req, res) {
-    db.Names.destroy({ where: { userid: req.params.id } }).then(function(
+
+  app.delete("/api/names/:id", function(req, res) {
+    db.Names.destroy({ where: { id: req.params.id } }).then(function(
       dbExample
     ) {
       res.json(dbExample);
@@ -59,11 +50,21 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/names/:searchterm/:gender", function(req, res) {
+  app.post("/api/signup", function(req, res) {
+    db.Users.create({
+      name: req.body.username,
+      password: req.body.password
+    }).then(function(dbUsers) {
+      res.json(dbUsers);
+    });
+  });
+
+  app.get("/api/names/:searchterm/:gender", async function(req, res) {
     const searchterm = req.params.searchterm;
     const genderterm = req.params.gender;
 
-    const bNames = Scrapper.scrapper(searchterm, genderterm);
+    const bNames = await scrapper.scrapper(searchterm, genderterm);
     console.log(bNames);
+    res.json(bNames);
   });
 };
