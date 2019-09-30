@@ -44,4 +44,16 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+  app.post("/api/login", function(req, res) {
+    db.Users.findOne({ where: { name: req.body.username } }).then(function(
+      user
+    ) {
+      if (req.body.password === user.password) {
+        res.json({ id: user.id });
+      } else {
+        res.json(401);
+      }
+    });
+  });
 };
