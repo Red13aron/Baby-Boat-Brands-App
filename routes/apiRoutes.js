@@ -1,6 +1,6 @@
 var db = require("../models");
-const Scrapper = require("../scrapper/scrappe");
-
+const Scrapper = require("../scrapper/scrappe.js");
+const scrapper = new Scrapper();
 module.exports = function(app) {
   // Get the API for specific user:
   app.get("/api/names/:userid", function(req, res) {
@@ -62,11 +62,12 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/names/:searchterm/:gender", function(req, res) {
+  app.get("/api/names/:searchterm/:gender", async function(req, res) {
     const searchterm = req.params.searchterm;
     const genderterm = req.params.gender;
 
-    const bNames = Scrapper.scrapper(searchterm, genderterm);
+    const bNames = await scrapper.scrapper(searchterm, genderterm);
     console.log(bNames);
+    res.json(bNames);
   });
 };
