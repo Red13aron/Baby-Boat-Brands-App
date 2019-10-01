@@ -7,9 +7,9 @@ module.exports = function(app) {
     res.render("index");
   });
 
-  // Load the history with the favorites users'name:
-  app.get("/history", function(req, res) {
-    res.render("history");
+  // Load example page and pass in an example by id
+  app.get("/favorites", function(req, res) {
+    res.render("favorites");
   });
 
   app.get("/results/:searchterm/:gender", async function(req, res) {

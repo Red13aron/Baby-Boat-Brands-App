@@ -1,4 +1,13 @@
 (function() {
+  const showNotification = function(message) {
+    const notificationDiv = document.getElementById("notificationDiv");
+    notificationDiv.innerText = message;
+    notificationDiv.classList.add("show");
+    setTimeout(function() {
+      notificationDiv.classList.remove("show");
+    }, 3000);
+  };
+
   const getUserId = function() {
     const userId = document.cookie.split(";")[0].split("=")[1];
     return userId !== "null" ? Number(userId) : void 0;
@@ -31,7 +40,7 @@
     alert("share " + name.name + " " + (name.gender ? "F" : "M"));
   };
 
-  const logInToggle = function(userId) {
+  const logInToggle = function(userId, hideNotification = false) {
     const login = userId !== void 0;
     document.cookie = "userId=" + (login ? userId : null);
     document.getElementById("modal").checked = !login;
@@ -44,6 +53,9 @@
     if (login) {
       document.getElementById("usernameInput").value = "";
       document.getElementById("passwordInput").value = "";
+    }
+    if (!hideNotification) {
+      showNotification("Logged " + (login ? "in!" : "out!"));
     }
   };
 
@@ -70,9 +82,11 @@
         if (favorited) {
           event.target.classList.add("favorited");
           event.target.setAttribute("data-id", userId);
+          showNotification("Added " + name.name + " to favorites.");
         } else {
           event.target.classList.remove("favorited");
           event.target.setAttribute("data-id", "");
+          showNotification("Removed " + name.name + " from favorites.");
         }
       });
   };
@@ -109,7 +123,7 @@
 
   const init = function() {
     if (getUserId() !== void 0) {
-      logInToggle(getUserId());
+      logInToggle(getUserId(), true);
     }
     document
       .getElementById("loginForm")
