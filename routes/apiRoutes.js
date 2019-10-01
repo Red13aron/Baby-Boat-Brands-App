@@ -22,11 +22,8 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/names/:userid", function(req, res) {
-    db.Names.create({
-      name: req.body.name,
-      gender: req.body.gender,
-      searchTerm: req.body.searchTerm
-    }).then(function(dbnames) {
+    console.log(req.body);
+    db.Names.create(req.body).then(function(dbnames) {
       res.json(dbnames);
     });
   });
