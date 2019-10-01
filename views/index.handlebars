@@ -1,12 +1,52 @@
 {{#> navbar activeIndex=true}}{{/navbar}}
 <div class="splash-container">
-    <div class="splash">
-        <h1 class="splash-head">Babies, Boats, & Brands</h1>
-        <p class="splash-subhead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </p>
-        <p id="getStartedContainer">
-            <label class="pure-button button-secondary" for="modal">Get Started</label>
-        </p>
-    </div>
+<div class="splash">
+<h1 class="splash-head">Babies, Boats, & Brands</h1>
+<p class="splash-subhead">
+
+
+{{!-- babys --}}
+<div id="btns">
+<div class="btn" onclick="window.location='#'">
+<i class="fa fa-baby"></i>
+<h2>BABYS</h2>
+<p>Your baby is unique, naming your newborn paves the way to who they will grow into.</p>
 </div>
+
+
+{{!-- boats --}}
+<div class="btn" onclick="window.location='#'">
+<i class="fa fa-anchor"></i>
+<h2>BOATS</h2>
+<p>Your favorite toys deserve a unique name too.</p>
+</div>
+
+
+  {{!-- brands --}}
+<div class="btn" onclick="window.location='#'">
+icon here
+<h2>BRANDS</h2>
+<p>Your brand integrity is valuable. Innovating your brand name is key to promoting what you do.</p>
+</div>
+</div>
+
+
+<!--  search bar-->
+<div class="wrap">
+<div class="search">
+<input type="text" class="searchTerm" placeholder="What are you looking for?">
+<button type="submit" class="searchButton">
+<i class="fa fa-search"></i>
+</button>
+</div>
+</div>   
+
+
+{{!-- get started --}}
+</p>
+<p id="getStartedContainer">
+<label class="pure-button button-secondary" for="modal">Get Started</label>
+</p>
+</div>
+</div>
+<script type="stylesheet" rel="./indexSearchBar.js"></script>
