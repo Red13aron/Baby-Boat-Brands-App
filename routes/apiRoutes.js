@@ -21,20 +21,18 @@ module.exports = function(app) {
   });
 
   // Create a new example
-  app.post("/api/names/:userid", function(req, res) {
-    console.log(req.body);
+  app.post("/api/names", function(req, res) {
     db.Names.create(req.body).then(function(dbnames) {
-      res.json(dbnames);
+      res.json(dbnames.dataValues.id);
     });
   });
 
   // Delete an example by id
-
   app.delete("/api/names/:id", function(req, res) {
     db.Names.destroy({ where: { id: req.params.id } }).then(function(
       dbExample
     ) {
-      res.json(dbExample);
+      res.json(req.params.id);
     });
   });
 
