@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS namesdb;
 CREATE DATABASE namesdb;
 USE namesdb;
 
+DROP TABLE IF EXISTS names;
 CREATE TABLE names
 (
     id int NOT NULL
@@ -16,7 +17,7 @@ CREATE TABLE names
     (id)
 );
 
-DROP TABLE users;
+DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
     id int not null AUTO_INCREMENT,

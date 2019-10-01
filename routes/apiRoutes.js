@@ -20,14 +20,14 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new example
+  // Create a new favorite Name
   app.post("/api/names", function(req, res) {
     db.Names.create(req.body).then(function(dbnames) {
       res.json(dbnames.dataValues.id);
     });
   });
 
-  // Delete an example by id
+  // Delete a Name by id
   app.delete("/api/names/:id", function(req, res) {
     db.Names.destroy({ where: { id: req.params.id } }).then(function(
       dbExample
