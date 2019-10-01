@@ -126,6 +126,7 @@ p img {
 .modal #buttonContainer {
   display: block;
   width: 100%;
+  text-align: center;
 }
 
 .modal input::placeholder,

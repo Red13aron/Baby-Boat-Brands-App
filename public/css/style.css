@@ -1,8 +1,8 @@
 body {
-  background-color: #1f8dd6;
+  background-color: #f6f6f6;
 }
 .content {
-  color: #f6f6f6;
+  color: #222222;
   font-size: 1.5em;
   margin: auto;
   position: absolute;
@@ -29,23 +29,90 @@ body {
 .button-secondary {
   color: #0c588b;
 }
-.pure-g {
+table {
   text-align: left;
   width: 80%;
   margin-left: 10%;
   background-color: rgba(0, 0, 0, 0.1);
   padding: 5px;
 }
-.pure-g .pure-header {
-  border-bottom: 2px solid #f6f6f6;
+tr.header {
+  border-bottom: 2px solid #222222;
+}
+tr.female-row:hover {
+  background: linear-gradient(
+    to right,
+    transparent,
+    10%,
+    #e35372,
+    45%,
+    #e35372,
+    55%,
+    #e35372,
+    90%,
+    transparent
+  );
+}
+tr.female-row:hover .fa-venus,
+tr.male-row:hover .fa-mars {
+  color: #222222;
+}
+tr.male-row:hover {
+  background: linear-gradient(
+    to right,
+    transparent,
+    10%,
+    #538fe3,
+    45%,
+    #538fe3,
+    55%,
+    #538fe3,
+    90%,
+    transparent
+  );
+}
+td {
+  width: 12.5%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+td.name-td {
+  width: 62.5%;
 }
 .right-align {
   text-align: right;
 }
 .favorite-button.favorited {
   color: #bf0a30;
+  font-size: 1em;
+}
+.favorite-button,
+.share-button {
+  font-size: 0.75em;
 }
 .favorite-button:hover,
 .share-button:hover {
   opacity: 0.75;
+  cursor: pointer;
+}
+.fa-mars {
+  color: #538fe3;
+}
+.fa-venus {
+  color: #e35372;
+}
+#notificationDiv {
+  background-color: #4bb543;
+  color: #f6f6f6;
+  position: absolute;
+  z-index: 1;
+  bottom: 3px;
+  right: 3px;
+  border-radius: 3px;
+  padding: 5px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+#notificationDiv.show {
+  opacity: 1;
 }
