@@ -20,7 +20,7 @@ module.exports = function(app) {
     const bNames = await scrapper.scrapper(searchterm, genderterm);
     console.table(bNames);
 
-    res.render("results", bNames);
+    res.render("results", { bNames });
   });
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

@@ -13,17 +13,23 @@ CREATE TABLE names
 	gender boolean DEFAULT NULL,
     searchTerm varchar
     (255) NOT NULL,
+    createdAt DATE null,
+    updatedAt DATE null,
 	PRIMARY KEY
     (id)
 );
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE users
-(
-    id int not null AUTO_INCREMENT,
-    name varchar(255) not null,
-    password varchar(255) not null,
+    DROP TABLE IF EXISTS users;
+    CREATE TABLE users
+    (
+        id int not null
+        AUTO_INCREMENT,
+    name varchar
+        (255) not null,
+    password varchar
+        (255) not null,
     createdAt DATE null,
     updatedAt DATE null,
-    PRIMARY KEY (id)
+    PRIMARY KEY
+        (id)
 );
