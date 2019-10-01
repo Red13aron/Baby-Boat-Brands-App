@@ -18,18 +18,9 @@ module.exports = function(app) {
     const genderterm = req.params.gender;
 
     const bNames = await scrapper.scrapper(searchterm, genderterm);
-    console.log(bNames);
-    console.log(genderterm);
-    const wrapper = [];
-    bNames.forEach(name => {
-      const nameObj = {
-        name,
-        gender: genderterm === "female"
-      };
-      wrapper.push(nameObj);
-    });
-    console.log(wrapper);
-    res.render("results", wrapper);
+    console.table(bNames);
+
+    res.render("results", { bNames });
   });
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

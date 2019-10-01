@@ -7,13 +7,13 @@
             <td></td>
             <td></td>
         </tr>
-        {{#each this}}
-        {{#if gender}}<tr class="female-row">
+        {{#each bNames}}
+        {{#if genderBool}}<tr class="female-row">
         {{else}}<tr class="male-row">{{/if}}
             <td><span class="name-index"></span></td>
-            <td class="name-td">{{name}}</td>
+            <td class="name-td">{{bnResults}}</td>
             <td>
-                {{#if gender}}<i class="fa fa-venus"></i>
+                {{#if genderBool}}<i class="fa fa-venus"></i>
                 {{else}}<i class="fa fa-mars"></i>{{/if}}
             </td>
             <td class="right-align">
