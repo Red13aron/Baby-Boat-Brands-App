@@ -5,12 +5,14 @@
             <div class="pure-u-2-3 pure-header">Name</div>
             <div class="pure-u-1-6 pure-header">Gender</div>
             <div class="pure-u-1-6 pure-header right-align"></div>
-            <div class="pure-u-2-3">John</div>
+            {{#each names}}
+            <div class="pure-u-2-3">{{this}}</div>
             <div class="pure-u-1-6">M</div>
             <div class="pure-u-1-6 right-align">
                 <i class="fa fa-share-alt"></i>
                 <i class="fa fa-heart"></i>
             </div>
+            {{/each}}
         </div>
     </div>
 </div>
