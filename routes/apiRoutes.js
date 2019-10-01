@@ -56,13 +56,4 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
-
-  app.get("/api/names/:searchterm/:gender", async function(req, res) {
-    const searchterm = req.params.searchterm;
-    const genderterm = req.params.gender;
-
-    const bNames = await scrapper.scrapper(searchterm, genderterm);
-    console.log(bNames);
-    res.json(bNames);
-  });
 };

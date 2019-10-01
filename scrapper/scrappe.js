@@ -12,6 +12,7 @@ const Scrapper = function() {
             const resultsHeading = $(".resultsHeading")
               .text()
               .trim();
+
             const oIndex = resultsHeading.indexOf("o");
             //   console.log(oIndex);
             const rIndex = resultsHeading.indexOf("r");
@@ -31,10 +32,12 @@ const Scrapper = function() {
               bnArray.push(bnResults);
             }
             return res(bnArray);
+          } else {
+            rej(error);
           }
         }
       );
-    });
+    }).catch(error => console.log(error));
   };
 };
 module.exports = Scrapper;
