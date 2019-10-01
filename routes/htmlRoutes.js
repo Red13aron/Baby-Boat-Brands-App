@@ -19,7 +19,16 @@ module.exports = function(app) {
 
     const bNames = await scrapper.scrapper(searchterm, genderterm);
     console.log(bNames);
-    const wrapper = { names: bNames };
+    console.log(genderterm);
+    const wrapper = [];
+    bNames.forEach(name => {
+      const nameObj = {
+        name,
+        genderterm
+      };
+      wrapper.push(nameObj);
+    });
+    console.log(wrapper);
     res.render("results", wrapper);
   });
   // Render 404 page for any unmatched routes
