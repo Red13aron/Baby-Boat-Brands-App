@@ -1,0 +1,212 @@
+html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: #ddf0fc;
+  box-sizing: border-box;
+}
+
+#btns * {
+  transition: all 0.3s ease-in-out;
+}
+
+#btns {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-flow: row wrap;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  position: relative;
+  padding: 10px 20px 25px;
+  width: 25%;
+  background: #111;
+  font-family: lato;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Button Backgrounds */
+
+.btn:nth-child(1) {
+  background: #2ba1eb;
+}
+
+.btn:nth-child(2) {
+  background: #2ba1eb;
+}
+
+.btn:nth-child(3) {
+  background: #2ba1eb;
+}
+
+/* Arrows */
+
+.btn:nth-child(1):after,
+.btn:nth-child(2):after,
+.btn:nth-child(3):after {
+  position: absolute;
+  top: 45%;
+  right: -18px;
+  z-index: 1;
+  content: "";
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #117ec3;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:nth-child(2):after {
+  border-left: 20px solid #1491e1;
+}
+
+.btn:nth-child(3):after {
+  border-left: 20px solid #2ba1eb;
+}
+/* Icon */
+
+.btn .icon {
+  display: block;
+  margin: 10px auto;
+  width: 80px;
+  height: 80px;
+  transform-origin: center;
+  transform: scale(0.9);
+  color: #fff;
+}
+
+.fa fa-baby {
+  display: block;
+  margin: 10px auto;
+  width: 80px;
+  height: 80px;
+  transform-origin: center;
+  transform: scale(0.9);
+  color: #fff;
+}
+
+.btn .icon svg {
+  fill: currentColor;
+}
+
+.btn .icon path {
+  fill: currentColor;
+}
+
+.btn .icon {
+  fill: currentColor;
+}
+
+/* Text Styles */
+
+.btn h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: #fff;
+  font-family: raleway;
+  font-size: 1.4em;
+  line-height: 1em;
+  font-weight: 400;
+}
+
+.btn p {
+  color: #fff;
+  text-align: center;
+  font-size: 1em;
+  line-height: 1.5em;
+  font-weight: 300;
+}
+
+/* Hover Effects */
+
+.btn:hover {
+  background: #0b6ca9;
+}
+
+.btn:hover:after {
+  border-left: 20px solid #0b6ca9;
+}
+
+.btn:hover .icon {
+  transform-origin: center;
+  transform: scale(1);
+  color: #fff;
+}
+
+.btn:hover h2 {
+  color: #fff;
+}
+
+/* Media Queries */
+
+@media all and (max-width: 950px) and (min-width: 701px) {
+  .btn {
+    width: 50%;
+  }
+
+  .btn:nth-child(2):after {
+    border-left: 0px;
+  }
+}
+
+@media all and (max-width: 700px) and (min-width: 0px) {
+  .btn {
+    display: block;
+    width: 100%;
+  }
+
+  .btn:nth-child(1):after,
+  .btn:nth-child(2):after,
+  .btn:nth-child(3):after {
+    border-left: 0px;
+  }
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00b4cc;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: #00b4cc;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00b4cc;
+  background: #00b4cc;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+  width: 84%;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
