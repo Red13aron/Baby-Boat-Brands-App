@@ -8,8 +8,8 @@
   bottom: 0;
   left: 0;
   text-align: left;
-  background: rgba(0,0,0, .9);
-  transition: opacity .25s ease;
+  background: rgba(0, 0, 0, 0.9);
+  transition: opacity 0.25s ease;
 }
 
 .modal__bg {
@@ -34,7 +34,7 @@
 }
 
 .modal__inner {
-  transition: top .25s ease;
+  transition: top 0.25s ease;
   position: absolute;
   top: -20%;
   right: 0;
@@ -43,7 +43,7 @@
   width: 33%;
   margin: auto;
   overflow: auto;
-  background: #538fe3;;
+  background: #538fe3;
   border-radius: 5px;
   padding: 1em 2em;
   height: 33%;
@@ -61,7 +61,7 @@
 
 .modal__close:after,
 .modal__close:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 2px;
   height: 1.5em;
@@ -109,16 +109,29 @@ p img {
   margin: 0 1em 1em 0;
 }
 
-.modal input, .modal button {
-  display: block;
-  width: 100%;
+.modal input,
+.modal button {
   margin: 5px 0;
   padding: 10px 15px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.modal input::placeholder, .modal h1, .modal input, .modal button {
+.modal button {
+  width: 48%;
+  padding: 5px 0;
+}
+
+.modal input,
+.modal #buttonContainer {
+  display: block;
+  width: 100%;
+}
+
+.modal input::placeholder,
+.modal h1,
+.modal input,
+.modal button {
   color: #f6f6f6;
   text-align: center;
 }
