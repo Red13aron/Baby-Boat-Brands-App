@@ -24,7 +24,7 @@ module.exports = function(app) {
     bNames.forEach(name => {
       const nameObj = {
         name,
-        genderterm
+        gender: genderterm === "female"
       };
       wrapper.push(nameObj);
     });

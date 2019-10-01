@@ -1,5 +1,6 @@
 body {
   background-color: #f6f6f6;
+  counter-reset: section;
 }
 .content {
   color: #222222;
@@ -101,18 +102,33 @@ td.name-td {
 .fa-venus {
   color: #e35372;
 }
-#notificationDiv {
-  background-color: #4bb543;
-  color: #f6f6f6;
+#notificationContainer {
   position: absolute;
   z-index: 1;
-  bottom: 3px;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+#notificationDiv {
+  position: relative;
+  bottom: -100px;
   right: 3px;
-  border-radius: 3px;
-  padding: 5px;
+  background-color: #4bb543;
+  color: #f6f6f6;
+  border-radius: 5px;
+  padding: 20px;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out, bottom 1s ease-in-out;
+  font-size: 2em;
 }
 #notificationDiv.show {
   opacity: 1;
+  bottom: 3px;
+}
+.name-index::before {
+  counter-increment: section;
+  content: counter(section);
+}
+.template {
+  display: none;
 }
