@@ -7,7 +7,7 @@ module.exports = function(app) {
     res.render("index");
   });
 
-  // Load example page and pass in an example by id
+  // Load the history with the favorites users'name:
   app.get("/history", function(req, res) {
     res.render("history");
   });
