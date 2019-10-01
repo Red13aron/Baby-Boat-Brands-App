@@ -8,8 +8,8 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/history", function(req, res) {
-    res.render("history");
+  app.get("/favorites", function(req, res) {
+    res.render("favorites");
   });
 
   app.get("/results/:searchterm/:gender", async function(req, res) {
@@ -18,18 +18,9 @@ module.exports = function(app) {
     const genderterm = req.params.gender;
 
     const bNames = await scrapper.scrapper(searchterm, genderterm);
-    console.log(bNames);
-    console.log(genderterm);
-    const wrapper = [];
-    bNames.forEach(name => {
-      const nameObj = {
-        name,
-        genderterm
-      };
-      wrapper.push(nameObj);
-    });
-    console.log(wrapper);
-    res.render("results", wrapper);
+    console.table(bNames);
+
+    res.render("results", { bNames });
   });
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

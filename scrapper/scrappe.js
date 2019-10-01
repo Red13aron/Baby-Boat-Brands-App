@@ -29,7 +29,20 @@ const Scrapper = function() {
               const bnResults = $(".babyNameSearchResultsTable")
                 .find(`#name_${i}`)
                 .text();
-              bnArray.push(bnResults);
+              const genderResults = $(".babyNameSearchResultsTable")
+                .find(`#name_${i}`)
+                .parent()
+                .next()
+                .children()
+                .attr("class")
+                .slice(-1);
+              let genderBool = null;
+              if (genderResults === `M`) {
+                genderBool = 0;
+              } else {
+                genderBool = 1;
+              }
+              bnArray.push({ bnResults, genderBool });
             }
             return res(bnArray);
           } else {
