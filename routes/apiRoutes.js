@@ -1,6 +1,9 @@
 var db = require("../models");
 const Scrapper = require("../scrapper/scrappe.js");
 const scrapper = new Scrapper();
+const auth = require("../auth/isAuthenticated");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 module.exports = function(app) {
   // Get the API for specific user:
   app.get("/api/names/:userid", function(req, res) {
@@ -40,20 +43,29 @@ module.exports = function(app) {
     db.Users.findOne({ where: { name: req.body.username } }).then(function(
       user
     ) {
-      if (req.body.password === user.password) {
-        res.json({ id: user.id });
-      } else {
-        res.json(401);
-      }
+      bcrypt.compare(req.body.password, user.password, function(err, isAuth) {
+        // isAuth === true
+        if (isAuth) {
+          res.json({ id: user.id });
+          // isAuth === false
+        } else {
+          res.json(401);
+        }
+      });
     });
   });
 
   app.post("/api/signup", function(req, res) {
-    db.Users.create({
-      name: req.body.username,
-      password: req.body.password
-    }).then(function(dbUsers) {
-      res.json(dbUsers);
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+      bcrypt.hash(req.body.password, salt, function(err, hash) {
+        // Store hash in your password DB.
+        db.Users.create({
+          name: req.body.username,
+          password: hash
+        }).then(function() {
+          res.sendStatus(200);
+        });
+      });
     });
   });
 };
