@@ -1,11 +1,8 @@
 {{#> navbar activeIndex=true}}{{/navbar}}
 <div class="splash-container">
 <div class="splash">
-<h1 class="splash-head">Babies, Boats, & Brands</h1>
-<p class="splash-subhead">
-
-
-{{!-- babys --}}
+<h1 class="splash-head">
+<!--  {{!-- babys --}}
 <div id="btns">
 <div class="btn" onclick="window.location='#'">
 <i class="fa fa-baby"></i>
@@ -28,21 +25,26 @@ icon here
 <h2>BRANDS</h2>
 <p>Your brand integrity is valuable. Innovating your brand name is key to promoting what you do.</p>
 </div>
-</div>
+</div>-->
 
 
 <!--  search bar-->
-<div class="wrap">
+  <form id="searchForm">
 <div class="search">
-<input type="text" class="searchTerm" placeholder="What are you looking for?">
+<input type="text" class="searchTerm" name="term" placeholder="Meaning">
+<select id="searchSelect" name="gender">
+  <option value="all">All</option>
+  <option value="male">Male</option>
+  <option value="female">Female</option>
+</select>
 <button type="submit" class="searchButton">
 <i class="fa fa-search"></i>
 </button>
 </div>
-</div>   
-
-
-{{!-- get started --}}
+</form>
+</h1>
+<p class="splash-subhead">
+  Your baby is unique, naming your newborn paves the way to who they will grow into.
 </p>
 <p id="getStartedContainer">
 <label class="pure-button button-secondary" for="modal">Get Started</label>
