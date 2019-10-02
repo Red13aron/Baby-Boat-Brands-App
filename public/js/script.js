@@ -40,7 +40,7 @@
   const getUserId = function() {
     const userId = getCookie("userId");
     const userIdExists = userId.length > 0 && userId !== "undefined";
-    return userIdExists ? Number(userId) : void 0;
+    return userIdExists ? userId : void 0;
   };
 
   const buildName = function(element) {
@@ -99,7 +99,9 @@
     const name = buildName(event.target);
     const favorited = name.id === void 0;
     const method = favorited ? "POST" : "DELETE";
-    const url = "/api/names" + (favorited ? "" : "/" + name.id);
+    const url =
+      "/api/names" + (favorited ? "" : "/" + getUserId() + "/" + name.id);
+    console.log(name);
     fetch(url, {
       headers: {
         "Content-Type": "application/json"
