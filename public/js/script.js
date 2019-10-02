@@ -1,4 +1,24 @@
 (function() {
+  // https://stackoverflow.com/questions/4825683/how-do-i-create-and-read-a-value-from-cookie
+  const createCookie = function(name, value) {
+    const expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+  };
+  const getCookie = function(c_name) {
+    if (document.cookie.length > 0) {
+      let c_start = document.cookie.indexOf(c_name + "=");
+      if (c_start !== -1) {
+        c_start = c_start + c_name.length + 1;
+        let c_end = document.cookie.indexOf(";", c_start);
+        if (c_end === -1) {
+          c_end = document.cookie.length;
+        }
+        return unescape(document.cookie.substring(c_start, c_end));
+      }
+    }
+    return "";
+  };
+
   const showNotification = function(message) {
     const notificationDiv = document.getElementById("notificationDiv");
     notificationDiv.innerText = message;
@@ -8,16 +28,26 @@
     }, 3000);
   };
 
+  const showError = function(message) {
+    const errorDiv = document.getElementById("errorDiv");
+    errorDiv.innerText = message;
+    errorDiv.classList.add("show");
+    setTimeout(function() {
+      errorDiv.classList.remove("show");
+    }, 3000);
+  };
+
   const getUserId = function() {
-    const userId = document.cookie.split(";")[0].split("=")[1];
-    return userId !== "null" ? Number(userId) : void 0;
+    const userId = getCookie("userId");
+    const userIdExists = userId.length > 0 && userId !== "undefined";
+    return userIdExists ? Number(userId) : void 0;
   };
 
   const buildName = function(element) {
     const genderElement = element.parentNode.previousElementSibling;
     const nameElement = genderElement.previousElementSibling;
     let genderValue = null;
-    if (genderElement.children[0].classList.contains("fa-mars") === "M") {
+    if (genderElement.children[0].classList.contains("fa-mars")) {
       genderValue = 0;
     } else if (genderElement.children[0].classList.contains("fa-venus")) {
       genderValue = 1;
@@ -29,7 +59,7 @@
       gender: genderValue,
       searchTerm: getSearchTerm()
     };
-    if (nameId !== "") {
+    if (nameId !== null && nameId !== "") {
       name.id = Number(nameId);
     }
     return name;
@@ -42,7 +72,7 @@
 
   const logInToggle = function(userId, hideNotification = false) {
     const login = userId !== void 0;
-    document.cookie = "userId=" + (login ? userId : null);
+    createCookie("userId", userId);
     document.getElementById("modal").checked = !login;
     document.getElementById("logInLabel").innerText =
       "Log " + (login ? "out" : "in");
@@ -129,12 +159,14 @@
   };
 
   const init = function() {
-    if (getUserId() !== void 0) {
-      logInToggle(getUserId(), true);
+    const userId = getUserId();
+    if (userId !== void 0) {
+      logInToggle(userId, true);
     }
-    document
-      .getElementById("searchForm")
-      .addEventListener("submit", searchHandler);
+    const searchForm = document.getElementById("searchForm");
+    if (searchForm) {
+      searchForm.addEventListener("submit", searchHandler);
+    }
     document
       .getElementById("loginForm")
       .addEventListener("submit", loginHandler);

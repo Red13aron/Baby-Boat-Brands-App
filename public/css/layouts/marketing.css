@@ -21,7 +21,7 @@ h4,
 h5,
 h6,
 label {
-  color: #34495e;
+  color: #f6f6f6;
 }
 
 .pure-img-responsive {
@@ -110,7 +110,6 @@ label {
  */
 
 .splash-container {
-  background: #1f8dd6;
   z-index: 1;
   overflow: hidden;
   /* The following styles are required for the "scroll-over" effect */
