@@ -1,12 +1,7 @@
 {{#> navbar activeResults=true}}{{/navbar}}
 <div class="content">
+    <h1>Results</h1>
     <table>
-        <tr class="header">
-            <td></td>
-            <td class="name-td">Name</td>
-            <td></td>
-            <td></td>
-        </tr>
         {{#each bNames}}
         {{#if genderBool}}<tr class="female-row">
         {{else}}<tr class="male-row">{{/if}}
@@ -17,7 +12,6 @@
                 {{else}}<i class="fa fa-mars"></i>{{/if}}
             </td>
             <td class="right-align">
-                <i class="fa fa-share-alt share-button"></i>
                 <i class="fa fa-heart favorite-button"></i>
             </td>
         </tr>
