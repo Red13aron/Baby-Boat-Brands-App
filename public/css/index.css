@@ -21,6 +21,7 @@
   font-family: lato;
   cursor: pointer;
   box-sizing: border-box;
+  display: none;
 }
 
 /* Button Backgrounds */
@@ -160,10 +161,11 @@
 }
 
 .search {
-  position: relative;
+  display: flex;
 }
 .searchTerm {
   width: 100%;
+  flex: 1;
   border: 3px solid #00b4cc;
   border-right: none;
   padding: 5px;
@@ -176,18 +178,27 @@
   color: #00b4cc;
 }
 
+#searchSelect {
+  border: 5px solid #00b4cc;
+  background-color: #00b4cc;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.75em;
+}
+
+#searchSelect:active,
+.searchButton:active {
+  background-color: #029cc2;
+  border-color: #029cc2;
+}
+
 .searchButton {
-  width: 50px;
-  height: 100%;
-  border: 1px solid #00b4cc;
+  border: 5px solid #00b4cc;
   background: #00b4cc;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
-  font-size: 20px;
-  display: inline-block;
-  position: absolute;
-  right: 0;
-  top: 0;
+  font-size: 1em;
 }

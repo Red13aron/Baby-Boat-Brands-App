@@ -91,6 +91,13 @@
       });
   };
 
+  const searchHandler = function(event) {
+    event.preventDefault();
+    const form = document.getElementById("searchForm");
+    window.location.href +=
+      "results/" + form.term.value + "/" + form.gender.value;
+  };
+
   const signUpHandler = function(event) {
     event.preventDefault();
     const username = document.getElementById("usernameInput").value;
@@ -106,7 +113,7 @@
       .then(user => logInToggle(user.id));
   };
 
-  const submitHandler = function(event) {
+  const loginHandler = function(event) {
     event.preventDefault();
     const username = document.getElementById("usernameInput").value;
     const password = document.getElementById("passwordInput").value;
@@ -126,8 +133,11 @@
       logInToggle(getUserId(), true);
     }
     document
+      .getElementById("searchForm")
+      .addEventListener("submit", searchHandler);
+    document
       .getElementById("loginForm")
-      .addEventListener("submit", submitHandler);
+      .addEventListener("submit", loginHandler);
     document
       .getElementById("signupButton")
       .addEventListener("click", signUpHandler);
