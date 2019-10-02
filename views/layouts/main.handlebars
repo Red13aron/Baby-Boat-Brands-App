@@ -12,13 +12,20 @@
   <link rel="stylesheet" href="/css/modal.css" charset="utf-8">
   <link rel="stylesheet" href="/css/index.css" charset="utf-8">
   <script src="/js/script.js"></script>
+  <link href="favicon.png" rel="icon" type="image/x-png" />
   <title>Babies, Boats, & Brands</title>
 </head>
 
 <body>
+  <video autoplay muted loop id="water">
+    <source src="/videos/WaterCaustics.mp4" type="video/mp4">
+  </video>
   {{{body}}}
   <div id="notificationContainer">
     <div id="notificationDiv"></div>
+  </div>
+  <div id="errorContainer">
+    <div id="errorDiv"></div>
   </div>
   <input class="modal-state" id="modal" type="checkbox" />
   <div class="modal">
