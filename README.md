@@ -1,16 +1,8 @@
-# Baby-Boat-Brands-App
-An App
-
-to be continued...
-=================================================
-X1. BO$$ - Tori
-X2. FRONT-END/DESIGNER - Tori
-=================================================
-What is it?
+# Baby, Boat & Brands Web Application
 
 We have developed an app that gives the user the uniqueness that they want, based on inputs they submit.
 
-These can be names, nouns, places, and things.
+For now, it works constructiong baby names. In a nearly future, it will construct boats and brands nouns.
 
 Targeted at newborn parents, with the bonus of utilizing it for a plethora of concepts, such as; brands, businesses, pets, boats, pets, and an infinite list of material objects.
 
@@ -18,45 +10,50 @@ There are 15,000 births every hour, documented in the world. Which is a massive 
 
 Our app is a sophisticated and easy to use, user input unique name generator. Easy enough for a 4 year old to use.
 
+---
 
-==================================================
-X4. ROLES
-Back-end
-    ELI
-    SHANE 
+### Legend of Superheroes Team:
 
-front-end
-    OB
-    CAMERON 
-    TORI 
-    
-5. FRONT END
- - handlebars views
- - css
- - javascript
-  - auth0, passport/bcrypt
- 
-6. BACK END
-  - routing
-  - servers
-  - database
-  - sequalize
-  - api's
-7. ARCHITECT/DRAFTING DIAGRAM
+This web application was conceived by a team with the following collaborators: 
+## Brian Obrien, Cameron Lattz, Eli Gorniak, Shane Nelson, Victorya Johnston
+
+---
+
+### Deployed App
+
+You can visit the app here:
+https://babys-boats-brands.herokuapp.com/
+
+---
+
+### Description - how our app works
+
+Baby, Boat & Brands is a web application created for entertainment and for business.
+It has a basic function: provide for the user an easy way to find suggestions for babies, boats and brands names.
+Here is how it works:
+1. The firts function is to provide the user a new "metric" for distance betweem 2 points, not using miles ou kilometers, but using music!
+So, the user can see how many musics is the distance of the 2 points.
+
+2. The second function is to create a playlist.
+The user will be able to set 2 locations (like, cities) and some artist, and the app wil show a sort of albums.
+The user can select all the tracks that he wants to putt in the playlist.
+Then the app will can calculates the drive time, and compares it to the duration a playlist takes to play.
+
+This is a nice application for a good trip!
+
+---
+
+### Technologies
+
+- Node.js
+- Express.js
+- API
+- Scrapper - Cheerios
+- Passport
+
+---
+
+### The app in images
 
 
-// will delete this after, if we need to. just our notes! :)
-FRIDAY TASKS:
-- distribute tasks
-- create readme
-
-THE WEEKEND TASKS:
-
-MONDAY TASKS:
-
-TUESDAY TASKS:
-
-WEDNESDAY TASKS:
-
-THURDAY WE PRESENT!!!!!!!
 
