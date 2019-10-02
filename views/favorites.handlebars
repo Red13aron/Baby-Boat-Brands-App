@@ -37,7 +37,7 @@
   const getUserId = function() {
     const userId = getCookie("userId");
     const userIdExists = userId.length > 0 && userId !== "undefined";
-    return userIdExists ? Number(userId) : void 0;
+    return userIdExists ? userId : void 0;
   };
     const populateFavorites = function(favorites) {
         document.getElementById("loadingRow").remove();
