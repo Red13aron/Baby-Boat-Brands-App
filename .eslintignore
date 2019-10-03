@@ -3,3 +3,4 @@ node_modules
 **/*.css
 **/*.json
 *.json
+README.md
