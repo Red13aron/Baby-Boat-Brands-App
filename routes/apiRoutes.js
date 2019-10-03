@@ -10,12 +10,18 @@ const saltRounds = 10;
 module.exports = function(app) {
   // Get the API for specific user:
   app.get("/api/names/:userid", function(req, res) {
-    console.log(req.params.userid);
     db.Names.findAll({
       where: {
         userId: hashids.decode(req.params.userid)
       }
     }).then(function(dbnames) {
+      dbnames.sort(function(a, b) {
+        const nameA = a.name.toLowerCase(),
+          nameB = b.name.toLowerCase();
+        if (nameA < nameB) return -1;
+        if (nameA === nameB) return 0;
+        return 1;
+      });
       res.json(dbnames);
     });
   });
@@ -29,9 +35,7 @@ module.exports = function(app) {
 
   // Create a new favorite Name
   app.post("/api/names", function(req, res) {
-    console.log(req.body.UserId);
     req.body.UserId = hashids.decode(req.body.UserId);
-    console.log(req.body.UserId);
     db.Names.create(req.body).then(function(dbnames) {
       res.json(dbnames.dataValues.id);
     });
@@ -50,15 +54,19 @@ module.exports = function(app) {
     db.Users.findOne({ where: { name: req.body.username } }).then(function(
       user
     ) {
-      bcrypt.compare(req.body.password, user.password, function(err, isAuth) {
-        // isAuth === true
-        if (isAuth) {
-          res.json({ id: hashids.encode(user.id) });
-          // isAuth === false
-        } else {
-          res.json(401);
-        }
-      });
+      if (user !== null) {
+        bcrypt.compare(req.body.password, user.password, function(err, isAuth) {
+          // isAuth === true
+          if (isAuth) {
+            res.json({ id: hashids.encode(user.id) });
+            // isAuth === false
+          } else {
+            res.json(401);
+          }
+        });
+      } else {
+        res.json(401);
+      }
     });
   });
 
@@ -70,7 +78,7 @@ module.exports = function(app) {
           name: req.body.username,
           password: hash
         }).then(function(dbnames) {
-          res.json(hashids.encode(dbnames.userId));
+          res.json({ id: hashids.encode(dbnames.id) });
         });
       });
     });

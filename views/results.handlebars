@@ -2,14 +2,25 @@
 <div class="content">
     <h1>Results</h1>
     <table>
+        {{#unless bNames}}
+        <tr id="loadingRow">
+            <td colspan="4">No results found.</td>
+        </tr>
+        {{/unless}}
         {{#each bNames}}
-        {{#if genderBool}}<tr class="female-row">
-        {{else}}<tr class="male-row">{{/if}}
+        {{#if genderBool}}
+        <tr class="female-row">
+        {{else}}
+        <tr class="male-row">
+        {{/if}}
             <td><span class="name-index"></span></td>
             <td class="name-td">{{bnResults}}</td>
             <td>
-                {{#if genderBool}}<i class="fa fa-venus"></i>
-                {{else}}<i class="fa fa-mars"></i>{{/if}}
+                {{#if genderBool}}
+                <i class="fa fa-venus"></i>
+                {{else}}
+                <i class="fa fa-mars"></i>
+                {{/if}}
             </td>
             <td class="right-align">
                 <i class="fa fa-heart favorite-button"></i>

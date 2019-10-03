@@ -13,12 +13,19 @@ module.exports = function(app) {
   });
 
   app.get("/results/:searchterm/:gender", async function(req, res) {
-    console.log("HI!");
     const searchterm = req.params.searchterm;
     const genderterm = req.params.gender;
 
     const bNames = await scrapper.scrapper(searchterm, genderterm);
-    console.table(bNames);
+    if (bNames) {
+      bNames.sort(function(a, b) {
+        const nameA = a.bnResults.toLowerCase(),
+          nameB = b.bnResults.toLowerCase();
+        if (nameA < nameB) return -1;
+        if (nameA === nameB) return 0;
+        return 1;
+      });
+    }
 
     res.render("results", { bNames });
   });
