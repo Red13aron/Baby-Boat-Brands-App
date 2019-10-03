@@ -1,12 +1,19 @@
 var db = require("../models");
 const Scrapper = require("../scrapper/scrappe.js");
 const scrapper = new Scrapper();
+const auth = require("../auth/isAuthenticated");
+const bcrypt = require("bcrypt");
+const Hashids = require("hashids/cjs");
+const hashids = new Hashids("BabyNames");
+
+const saltRounds = 10;
 module.exports = function(app) {
   // Get the API for specific user:
   app.get("/api/names/:userid", function(req, res) {
+    console.log(req.params.userid);
     db.Names.findAll({
       where: {
-        userId: req.params.userid
+        userId: hashids.decode(req.params.userid)
       }
     }).then(function(dbnames) {
       res.json(dbnames);
@@ -22,16 +29,19 @@ module.exports = function(app) {
 
   // Create a new favorite Name
   app.post("/api/names", function(req, res) {
+    console.log(req.body.UserId);
+    req.body.UserId = hashids.decode(req.body.UserId);
+    console.log(req.body.UserId);
     db.Names.create(req.body).then(function(dbnames) {
       res.json(dbnames.dataValues.id);
     });
   });
 
   // Delete a Name by id
-  app.delete("/api/names/:id", function(req, res) {
-    db.Names.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
+  app.delete("/api/names/:userid/:id", function(req, res) {
+    db.Names.destroy({
+      where: { id: req.params.id, userId: hashids.decode(req.params.userid) }
+    }).then(function(dbExample) {
       res.json(req.params.id);
     });
   });
@@ -40,20 +50,29 @@ module.exports = function(app) {
     db.Users.findOne({ where: { name: req.body.username } }).then(function(
       user
     ) {
-      if (req.body.password === user.password) {
-        res.json({ id: user.id });
-      } else {
-        res.json(401);
-      }
+      bcrypt.compare(req.body.password, user.password, function(err, isAuth) {
+        // isAuth === true
+        if (isAuth) {
+          res.json({ id: hashids.encode(user.id) });
+          // isAuth === false
+        } else {
+          res.json(401);
+        }
+      });
     });
   });
 
   app.post("/api/signup", function(req, res) {
-    db.Users.create({
-      name: req.body.username,
-      password: req.body.password
-    }).then(function(dbUsers) {
-      res.json(dbUsers);
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+      bcrypt.hash(req.body.password, salt, function(err, hash) {
+        // Store hash in your password DB.
+        db.Users.create({
+          name: req.body.username,
+          password: hash
+        }).then(function(dbnames) {
+          res.json(hashids.encode(dbnames.userId));
+        });
+      });
     });
   });
 };
