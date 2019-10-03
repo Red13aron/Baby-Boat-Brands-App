@@ -50,8 +50,8 @@ Here is how it works:
 - Node.js
 - Express.js
 - API
+- Pure CSS
 - Scrapper - Cheerios
-- Passport
 - BCrypt
 
 ---
