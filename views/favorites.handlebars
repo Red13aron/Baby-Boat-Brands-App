@@ -19,6 +19,7 @@
     </table>
 </div>
 <script>
+  // https://stackoverflow.com/questions/4825683/how-do-i-create-and-read-a-value-from-cookie
   const getCookie = function(c_name) {
     if (document.cookie.length > 0) {
         let c_start = document.cookie.indexOf(c_name + "=");
@@ -35,18 +36,28 @@
   }
 
   const getUserId = function() {
+    // grab userId from the cookie
     const userId = getCookie("userId");
+    // determine if the userId exists in the cookie
     const userIdExists = userId.length > 0 && userId !== "undefined";
+    // if it exists, return the userId, else return undefined
     return userIdExists ? userId : void 0;
   };
     const populateFavorites = function(favorites) {
-        document.getElementById("loadingRow").remove();
+        // if we have no favorites, tell the user. else remove the loading row
+        if (favorites.length === 0) {
+            document.getElementById("loadingRow").children[0].innerText = "No favorites saved.";
+        } else {
+            document.getElementById("loadingRow").remove();
+        }
         const template = document.getElementsByClassName("template")[0];
         for (let i = 0; i < favorites.length; i++) {
             const favorite = favorites[i];
+            // clone the template row so we can use it to show the name results
             const templateClone = template.cloneNode(true);
             templateClone.classList.remove("template");
             templateClone.getElementsByClassName("name-td")[0].innerText = favorite.name;
+            // if the gender is female, hide the mars symbol, else hide the venus symbol
             if (favorite.gender) {
                 templateClone.getElementsByClassName("fa-mars")[0].remove();
                 templateClone.classList.add("female-row");
@@ -58,7 +69,12 @@
             document.getElementById("favoriteTable").append(templateClone);
         }
     }
-    fetch("/api/names/" + getUserId())
-    .then(res => res.json())
-    .then(favorites => populateFavorites(favorites));
+    const userId = getUserId();
+    if (userId !== void 0) {
+        fetch("/api/names/" + userId)
+        .then(res => res.json())
+        .then(favorites => populateFavorites(favorites));
+    } else {
+        document.getElementById("loadingRow").children[0].innerText = "Log in to see favorites.";
+    }
 </script>

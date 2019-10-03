@@ -35,21 +35,12 @@ table {
   text-align: left;
   width: 100%;
   margin-left: 0%;
-  background-color: #2d3e50;
+  background-color: #3d5c80;
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 20px;
 }
 
-@media (min-width: 48em) {
-  table {
-    width: 80%;
-    margin-left: 10%;
-  }
-  .pure-menu-heading img {
-    height: 40px;
-  }
-}
 tr.header {
   border-bottom: 2px solid #f6f6f6;
 }
@@ -116,17 +107,19 @@ td.name-td {
 }
 #notificationContainer,
 #errorContainer {
-  position: absolute;
-  z-index: 1;
+  position: fixed;
+  z-index: 5;
   bottom: 0;
   right: 0;
   overflow: hidden;
 }
 #notificationDiv {
   background-color: #4bb543;
+  border-color: 3px solid #f6f6f6;
 }
 #errorDiv {
   background-color: #d8000c;
+  border-color: 3px solid #f6f6f6;
 }
 #notificationDiv,
 #errorDiv {
@@ -134,11 +127,12 @@ td.name-td {
   bottom: -100px;
   right: 3px;
   color: #f6f6f6;
-  border-radius: 5px;
   padding: 20px;
   opacity: 0;
   transition: opacity 1s ease-in-out, bottom 1s ease-in-out;
-  font-size: 2em;
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 10px;
 }
 #notificationDiv.show,
 #errorDiv.show {
@@ -167,10 +161,26 @@ td:last-child {
 }
 .pure-menu-heading {
   padding: 0;
+  line-height: 0;
 }
 .pure-menu-heading img {
   height: 30px;
 }
-#loadingRow {
+#loadingRow td {
   text-align: center;
+  padding: 20px;
+}
+
+@media (min-width: 48em) {
+  table {
+    width: 80%;
+    margin-left: 10%;
+  }
+  #notificationDiv,
+  #errorDiv {
+    font-size: 20px;
+  }
+  .home-menu .pure-menu-heading img {
+    height: 40px;
+  }
 }
