@@ -1,10 +1,12 @@
 # Baby, Boat & Brands Web Application
 
+Application Name -- BAEBE--
+
 ### Overview
 
 We have developed an app that gives the user the uniqueness that they want, based on inputs they submit.
 
-For now, the app is targeted to newborn parents, working on generate only baby names. In a nearly future, it will construct boats and brands nouns.
+Currently, the app is targeted to newborn parents and generating unique baby names, based on meaning. In the near future, this app will construct boats and brands nouns.
 
 There are 15,000 births every hour, documented in the world. Which is a massive growth in population, throughout the world. A life brought into this world, is a precious blessing. Deciding on a name, is meaningful, and we provide that value through our application. We wanted to provide a way to make is easier, yet having a tremendous amount of value.
 
@@ -15,7 +17,7 @@ Our app is intuitive, sophisticated and easy name generator.
 ### Legend of Superheroes Team:
 
 This web application was conceived during the Cooding Boot Camp, as Project 2, by a team with the following collaborators: 
-##### Brian Obrien, Cameron Lattz, Eli Gorniak, Shane Nelson, Victorya Johnston
+##### Brian Obrien, Cameron Lattz, Eli Gorniak, Shane Nelson, Victoria Johnston
 
 ---
 
@@ -28,8 +30,10 @@ https://babys-boats-brands.herokuapp.com/
 
 ### Description - how our app works
 
-Baby, Boat & Brands is a web application created for entertainment and for business.
+Baby, Boat & Brands "BAEBE", is a web application created for innovation meaningful baby names, entertainment, and business purposes.
+
 It has a basic function: provide the user an easy way to find suggestions for babies, boats and brands names.
+
 Here is how it works:
 1. In the homepage, the visitor needs to register to be a new user. His datas populates a database.
 2. After that, the user can do a search, typing some specific term, like brave, intelligent, nice, happy, and the app will use the scraping web technology to extract data from a website. We're using https://www.babycenter.com/baby-names. And choosing the gender will allow the user to filter by gender. 
