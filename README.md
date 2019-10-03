@@ -1,4 +1,4 @@
-# BaeB Web Application
+# BaeBe Web Application
 
 Application Name -- BAEBE--
 
@@ -55,5 +55,3 @@ Here is how it works:
 - BCrypt
 
 ---
-
-### The app in images
